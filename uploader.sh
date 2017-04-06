@@ -17,10 +17,10 @@ else
     read -r -p '已存在 KindleEar 源码，是否更新？[y/N]' response
     if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
     then
-        # rm -rf ./KindleEar
-        # git clone https://github.com/cdhigh/KindleEar.git
-        cd ./KindleEar
-        git pull ./KindleEar
+        rm -rf ./KindleEar
+        git clone https://github.com/cdhigh/KindleEar.git
+        # cd ./KindleEar
+        # git pull ./KindleEar
         cd ..
     fi
 fi
@@ -47,7 +47,7 @@ then
     sed -i "s/^SRC_EMAIL = \".*\"/SRC_EMAIL = \"$email\"/g" ./config.py
     echo -n "请输入你的 APP ID："
     read appid
-    echo "您输入的 Gmail 地址是：'$appid'"
+    echo "您输入的 APP ID：'$appid'"
     sed -i "s/^application: .*/application: $appid/g" ./app.yaml ./module-worker.yaml
     sed -i "s/^DOMAIN = \"https:\/\/.*\.appspot.com\"/DOMAIN = \"https:\/\/$appid\.appspot.com\"/g" ./config.py
 fi
